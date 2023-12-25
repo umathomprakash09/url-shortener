@@ -9,8 +9,8 @@ module.exports = {
     },
     redirectToLongURL: async(req,res)=>{
         const inputs = req.params;
-        const shortURL = await userService.redirectToLongURL(inputs);
-        res.send(shortURL);
+        const longURL = await userService.redirectToLongURL(inputs);
+        res.redirect(longURL);
     },
 }
 

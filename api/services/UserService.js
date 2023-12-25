@@ -67,7 +67,7 @@ class UserService{
             raw:true,
             attributes:['url']
         });
-        console.log("URLData: ",urlData);
+        //console.log("URLData: ",urlData);
         if(urlData){
             return urlData.url
         }else{

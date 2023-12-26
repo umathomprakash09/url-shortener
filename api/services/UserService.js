@@ -6,6 +6,7 @@ class UserService{
     }
     async urlShortener(inputs){
         const inputURL = inputs.url;
+        const webAdress = 'http://localhost:3030/user/bit.ly/';
         const urlData = await models.URLShortener.findOne(
             {
             where:{
@@ -15,10 +16,10 @@ class UserService{
         });
         //console.log("URLData: ",urlData)
         if(urlData){
-            return urlData.short_url;
+            return {short_url:`${webAdress}${urlData.short_url}`};
         }
         const shortURL = await this.handleLongToShortURL(inputURL);
-        return shortURL;
+        return {short_url:`${webAdress}${shortURL}`};
     }
     async handleLongToShortURL(longURL){
         const base=62, alphabets = [], digits=[];
@@ -26,7 +27,7 @@ class UserService{
         //console.log(models.URLShortener);
         const urlData = await models.URLShortener.create({url:longURL});
         currentValue = urlData.dataValues.id;
-        let shortURL="http://localhost:3030/user/bit.ly/";
+        let shortURL="";
         //now generating its base 62 encoding
         while(currentValue>0){
             let reminder = currentValue%base;

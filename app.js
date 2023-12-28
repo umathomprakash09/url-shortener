@@ -5,7 +5,7 @@ const models = require('./models');
 const userRoute = require('./routes/v1/user-routes');
 
 const app = express();
-
+const errorHandler = require('./middlewares/error-handler');
 app.use(express.json());
 
 app.listen(process.env.APP_PORT,()=>{
@@ -27,3 +27,4 @@ models.sequelize.authenticate().then(() => {
 
 
 app.use('/user',userRoute);
+app.use(errorHandler);

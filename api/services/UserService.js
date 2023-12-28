@@ -23,7 +23,7 @@ class UserService{
     }
     async handleLongToShortURL(longURL){
         const base=62, alphabets = [], digits=[];
-        let currentValue; // replace it with database id
+        let currentValue; 
         //console.log(models.URLShortener);
         const urlData = await models.URLShortener.create({url:longURL});
         currentValue = urlData.dataValues.id;
@@ -72,7 +72,7 @@ class UserService{
         if(urlData){
             return urlData.url
         }else{
-            return "URL doesn't exist or expired."
+           throw new Error("Someothererror");
         }
     }
 }

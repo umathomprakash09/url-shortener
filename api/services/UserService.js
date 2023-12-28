@@ -72,7 +72,7 @@ class UserService{
         if(urlData){
             return urlData.url
         }else{
-           throw new Error("Someothererror");
+           throw new Error("notFound");
         }
     }
 }

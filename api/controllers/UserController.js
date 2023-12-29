@@ -17,5 +17,15 @@ module.exports = {
         }
         
     },
+    signUp: async(req,res,next)=>{
+        const inputs = req.body;
+        const user = await userService.singUp(inputs);
+        res.status(user.status||200).send({message:user.message||user});
+    },
+    logIn: async(req,res,next)=>{
+        const inputs = req.body;
+        const user = await userService.logIn(inputs);
+        res.status(user.status||200).send({message:user.message,token:user.token});
+    }
 }
 

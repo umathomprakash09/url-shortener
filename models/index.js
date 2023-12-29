@@ -3,6 +3,7 @@ require('dotenv').config();
 var env = process.env || {};
 //const UserModel = require('./User');
 const URLShortenerModel = require('./URLShortener')
+const UserModel = require('./User')
 
 const sequelize = new Sequelize(
     process.env.MYSQL_DB,
@@ -30,7 +31,8 @@ const sequelize = new Sequelize(
    );
 
    const db = {
-    URLShortener: URLShortenerModel.init(sequelize,Sequelize)
+    URLShortener: URLShortenerModel.init(sequelize,Sequelize),
+    User: UserModel.init(sequelize,Sequelize)
    }
 
 

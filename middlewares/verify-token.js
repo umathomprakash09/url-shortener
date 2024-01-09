@@ -8,7 +8,7 @@ module.exports = {
             verify(token,process.env.JWT_SECRET,(err,decoded)=>{
                 if(err){
                     res.json({
-                        success:0,
+                        success:false,
                         message: "Invalid Token"
                     })
                 }else{
@@ -17,7 +17,7 @@ module.exports = {
             })
         }else{
             res.json({
-                success: 0,
+                success: false,
                 message: "Access denied! Unauthorized user"
             })
         }

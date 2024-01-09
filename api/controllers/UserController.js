@@ -5,7 +5,7 @@ module.exports = {
     urlShortener: async(req,res,next)=>{
         const inputs = req.body;
         const shortURL = await userService.urlShortener(inputs);
-        res.send(shortURL);
+        res.send({success:true,...shortURL});
     },
     redirectToLongURL: async(req,res,next)=>{
         try{
@@ -25,7 +25,7 @@ module.exports = {
     logIn: async(req,res,next)=>{
         const inputs = req.body;
         const user = await userService.logIn(inputs);
-        res.status(user.status||200).send({message:user.message,token:user.token});
+        res.status(user.status||200).send({status:true,message:user.message,token:user.token});
     }
 }
 
